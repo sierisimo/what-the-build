@@ -9,7 +9,7 @@ BIN_DIR = bin
 MAIN_CLASS = MainKt
 JAR_FILE = app.jar
 
-.PHONY: all run clean
+.PHONY: all run clean tripas-class tripas-jvm tripas-ps
 
 # Default target: Compile & package
 all: $(JAR_FILE)
@@ -30,3 +30,15 @@ run: $(JAR_FILE)
 # Clean compiled files
 clean:
 	rm -rf $(BIN_DIR) $(JAR_FILE)
+
+watch-jvm:
+	jps -l
+
+tripas-class: all
+	javap $(BIN_DIR)/$(MAIN_CLASS)
+
+tripas-jvm:
+	java -XshowSettings:all -version
+
+tripas-ps:
+	jstat -class <PID>

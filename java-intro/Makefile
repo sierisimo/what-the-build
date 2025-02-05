@@ -26,6 +26,10 @@ $(JAR_FILE): $(CLASS_FILES)
 run: $(JAR_FILE)
 	java -jar $(JAR_FILE)
 
+# Carefull, this does not finish
+watch-jvm:
+	watch jps -l # See active processes on the JVM
+
 # Clean up compiled files
 clean:
 	rm -rf $(BIN_DIR) $(JAR_FILE)
