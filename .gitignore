@@ -1,3 +1,13 @@
+# Kotlin Gradle plugin data, see https://kotlinlang.org/docs/whatsnew20.html#new-directory-for-kotlin-data-in-gradle-projects
+.kotlin/
+
+###
+# C Files 
+*.o
+*.exe
+*.bin
+
+### Java ###
 # Compiled class file
 *.class
 
@@ -23,11 +33,3 @@
 hs_err_pid*
 replay_pid*
 
-# Kotlin Gradle plugin data, see https://kotlinlang.org/docs/whatsnew20.html#new-directory-for-kotlin-data-in-gradle-projects
-.kotlin/
-
-####
-
-*.o
-*.exe
-*.bin
