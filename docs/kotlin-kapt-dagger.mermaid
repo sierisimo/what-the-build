@@ -1,0 +1,29 @@
+flowchart TB
+    subgraph "Dagger + KAPT Compilation Process"
+        A[".kt Files"] --> B["Kotlin Compiler Frontend"]
+        
+        subgraph "KAPT Processing"
+            CP["Compilation Classpath"] -.-> B
+            B --> C["Java Stubs Generation"]
+            C --> D["Dagger Annotation Processor"]
+            AP["Annotation Processor Path\n(Dagger Compiler)"] -.-> D
+            D --> E["Generated Dagger Classes\n- Component Implementations\n- Factory Classes\n- MembersInjector"]
+        end
+        
+        subgraph "Final Compilation"
+            E --> F["Kotlin Compiler Backend"]
+            B --> F
+            F --> G["Type Resolution & Validation"]
+            G --> H["IR Generation"]
+            H --> I["Bytecode Generation"]
+            I --> J[".class Files"]
+        end
+        
+        subgraph "Build Cache"
+            K["KAPT Build Cache"] -.-> C
+            L["Kotlin Build Cache"] -.-> F
+        end
+        
+        %% Error handling flow
+        D -- "Validation Errors" --> M["Compilation Errors\n- Component Validation\n- Dependency Graph\n- Scoping Rules"]
+    end

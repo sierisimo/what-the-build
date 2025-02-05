@@ -1,0 +1,12 @@
+%% Direct Kotlinc Compilation Flow
+flowchart LR
+    subgraph "Basic Kotlinc Compilation"
+        CP["Classpath\n- JDK Classes\n- Dependencies"] -.-> B
+        A[".kt Files"] --> B["Kotlinc Compiler"]
+        B --> C["Parse & Lexical Analysis"]
+        C --> D["Type Checking & Resolution"]
+        D --> E["IR Generation"]
+        E --> F["Backend JVM Bytecode Generation"]
+        F --> G[".class Files"]
+    end
+

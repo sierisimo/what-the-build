@@ -1,0 +1,15 @@
+%% Gradle Kotlin Compilation Flow
+flowchart LR
+    subgraph "Gradle Kotlin Compilation"
+        A1[".kt Files"] --> B1["Gradle Build Process"]
+        CP1["Project Classpath"] -.-> D1
+        D2["External Dependencies"] -.-> D1
+        B1 --> C1["Kotlin Gradle Plugin"]
+        C1 --> D1["Dependencies Resolution"]
+        D1 --> E1["Kotlinc Compiler"]
+        E1 --> F1["Incremental Compilation"]
+        G1["Build Cache"] -.-> F1
+        F1 --> H1["Bytecode Generation"]
+        H1 --> I1[".class Files"]
+        H1 --> J1["JAR Creation"]
+    end

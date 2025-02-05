@@ -1,0 +1,14 @@
+%% KSP (Kotlin Symbol Processing) Flow
+flowchart LR
+    subgraph "KSP Compilation Process"
+        CP2["Compilation Classpath"] -.-> B2
+        AP["Annotation Processor Classpath"] -.-> D2
+        A2[".kt Files"] --> B2["Kotlin Compiler Frontend"]
+        B2 --> C2["Symbol Processing"]
+        D2["KSP Processors"] --> C2
+        C2 --> E2["Generated Sources"]
+        C2 --> F2["Kotlin Compiler Backend"]
+        E2 --> F2
+        F2 --> G2["Bytecode Generation"]
+        G2 --> H2[".class Files"]
+    end
